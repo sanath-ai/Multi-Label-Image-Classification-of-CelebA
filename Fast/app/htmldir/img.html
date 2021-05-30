@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>RESULT</title>
+    <style type="text/css">
+        * {
+            margin:0;
+            padding:0
+        }
+        ul {
+            list-style:none;
+            position:relative;
+        }
+        ul.list {
+            float:left;
+            width:450px;
+            margin:20px;
+        }
+        ul.list li {
+            width:150px;
+        }
+        ul.list ul{margin-bottom:20px}
+        ul.list ul ul {
+            position:absolute;
+            top:0;
+            left:170px;
+            width:150px;
+        }
+        ul.list ul li {
+            background:yellow;
+        }
+        </style>
+</head>
+<body>
+    <h1>Display Image</h1>
+
+    
+
+    <form action="/submitform" method="get" enctype="multipart/form-data">
+        <img src="{{ url_for('static', path='my_file.jpg') }}" alt="abc">
+
+    </form>
+    <h1>Predictions</h1>
+    <ul class="list">
+        <li>
+            <ul>
+                {% for c in col %}
+                <li>{{ c }}</li>
+                {% endfor %}
+                
+                    <ul>
+                        {% for p in predictions %}
+                        <li>{{ p }}</li>
+                        {% endfor %}
+                        
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</body>
+</html>
