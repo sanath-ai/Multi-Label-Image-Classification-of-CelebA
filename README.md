@@ -11,7 +11,7 @@ The project disintegrates an image into various classes related to facial attrib
 - The channel of the image can be changed to **gray scale** to make the feature extraction process faster in the CNN
 - Data augmentation has been performed to avoid **over fitting**
 - **Normalization** ensures that the pixel values range between [0,1] which necessarily means that every pixel is given an almost equal amount of consideration for computation, thereby contributing to higher accuracy. In this process of normalization, all negative values in the CSV are mapped against zero. Without normalization, accuracy takes a toll.
-- 
+
 ## Implementation Scheme and Model Selection:
 
 - With a variety of CNNs available for multiple layers of feature extraction like RESNET101, RESNET50 VGG16, etc., VGG16 has been used to achieve **feature extraction** of input images.
@@ -62,3 +62,8 @@ sudo docker run -d --name mycontainer -p 80:80 celeba
 ![Alt text](./loss.png?raw=true "Loss Graph for VGG16")
 
 - The model was trained for 20 epochs on GPU with a binary accuracy 0.89
+
+## TODO
+- [ ] Adding CSS
+- [ ] Training the model on RESNET50 and RESNET101
+- [ ] Using K-Means for clustering
