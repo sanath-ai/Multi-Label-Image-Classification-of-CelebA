@@ -1,5 +1,5 @@
 # Multi-Label-Image-Classification-of-CelebA
-In this project we are classifying an image into 40 classes which are the facial attribute.
+In this project we are classifying an image into 40 classes which are the facial attribute. Dataset link <https://www.kaggle.com/jessicali9530/celeba-dataset>
 
 ## Preprocessing and EDA
 
@@ -20,9 +20,9 @@ In this project we are classifying an image into 40 classes which are the facial
 ## Usage
 - Install the requirements using pip.
 ```
-pip install -r requirements.txt
+pip install -r FAST/requirements.txt
 ```
-- File ``` train.py``` is used for training . All the changeable parameters are at the begining of the file. 
+- File ``` train.py``` is used for training . All the changeable parameters are at the begining of the file. Save the model and copy inside the folder ```FAST```  
 ```
 IMG_DIR = <path to image dir>
 DATASET_DIR = <path to list_attr_celeba.csv>
