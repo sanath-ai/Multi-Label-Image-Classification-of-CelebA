@@ -4,7 +4,6 @@ In this project we are classifying an image into 40 classes which are the facial
 ## Preprocessing and EDA
 
 - In the dataset we can observe that all the classes doesn't have equal number of image. So there is a high chance that the classes whose data frequency are more in the dataset will be dominated and potentially decrease the accuracy of model. We can add more data for the classes having low frequency to fix the inaccuracy.
- 
 - The size of each image in the dataset is **218 X 178**. This can be modified based on the model with which we are training or the hardware components.
 - The channel of the image can be changed to **gray scale** to make the feature extraction process faster in the CNN
 - Data augmentation can be performed to avoid **over fitting**
