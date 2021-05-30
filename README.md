@@ -1,22 +1,27 @@
 # Multi-Label-Image-Classification-of-CelebA
-In this project we are classifying an image into 40 classes which are the facial attribute. Dataset link <https://www.kaggle.com/jessicali9530/celeba-dataset>
 
-## Preprocessing and EDA
+## Description: 
 
-- In the dataset we can observe that all the classes doesn't have equal number of image. So there is a high chance that the classes whose data frequency are more in the dataset will be dominated and potentially decrease the accuracy of model. We can add more data for the classes having low frequency to fix the inaccuracy.
-- The size of each image in the dataset is **218 X 178**. This can be modified based on the model with which we are training or the hardware components.
+The project disintegrates an image into various classes related to facial attributes indicating the probability of each attribute being present in the input image, based off of the dataset CelebA <https://www.kaggle.com/jessicali9530/celeba-dataset> consisting of 200k images and 40 classes each pointing to a specific facial attributes.
+
+## Pre-processing, EDA and Challenges:
+
+- In the dataset provided, we observe that each of the attributes do not have a high volume of images under it with a tolerance that is almost close to the number of images in each of the other attributes. In simpler terms, there is an imbalance noted in the equaity and high quantity of images available for each attribute. Owing to this imbalance, the probabiltiy of - the attributes whose data frequency are more in the dataset, will be high, consequentially leading to over fitting and decreasing the gross accuracy of the model. The fix to the imbalance causing the anomalies is a compensation – adding equal and quantifiable number of datum (images) for attributes with lower frequency.
+- The size of each image is reduced to an aspect ratio of **150*150** as a feeder to the neural network created in the model. The primary factor to choose the aspect ratio being hardware availability.
 - The channel of the image can be changed to **gray scale** to make the feature extraction process faster in the CNN
-- Data augmentation can be performed to avoid **over fitting**
-- **Normalization** each pixel to make sure it ranges between [0,1] 
-- Converting all the "-1" values in the CSV file to "0"
+- Data augmentation has been performed to avoid **over fitting**
+- **Normalization** ensures that the pixel values range between [0,1] which necessarily means that every pixel is given an almost equal amount of consideration for computation, thereby contributing to higher accuracy. In this process of normalization, all negative values in the CSV are mapped against zero. Without normalization, accuracy takes a toll.
+- 
+## Implementation Scheme and Model Selection:
 
-## Implementation and Model Selection
-- Since we are dealing with images we need to perform feature extraction on then we can choose variety for CNN having 2 layers or multiple layers like RESNET101 and etc.
-- A non-linear function like **relu** or **tanh** can be used for the activation layers.
-- At the end we have 3 dense layers having units 4096 ,512 ,40. It is important for the activation function of the final dense layer to be **sigmoid** and not softmax as we are dealing with multi label.
-- Here I have used loss function as binary cross entropy and accuracy function binary accuracy because we are expecting a probability of the image belonging on each classes.
+- With a variety of CNNs available for multiple layers of feature extraction like RESNET101, RESNET50 VGG16, etc., VGG16 has been used to achieve **feature extraction** of input images.
+- A non-linear function like **relu** or **tanh** can be used for the activation layers.Here I have used relu 
+- There are three dense layers having 4096, 512 and 40 units. The first two layers employ non-linear functions like relu or tanh for layer activation. The third layer, being multi-label, needs to prominently use **sigmoid and not softmax**.
+- To live-up-to the expectation of the probability of an image belonging to each class, loss and accuracy functions have been utilized as means to accomplish ***binary cross entropy*** and ***binary accuracies*** respectively.
 - After training the model is deployed and dockerized using FAST api.
-## Usage
+
+## Usage:
+
 - Install the requirements using pip.
 ```
 pip install -r FAST/requirements.txt
@@ -43,7 +48,17 @@ uvicorn app.main:app
 cd FAST
 sudo python3 -m venv <name of the environment>
 pip3 install -r requirements.txt
-sudo docker build -t celeba
-sudo docker run -d --name mycontainer -p 80:80 celeba
+sudo docker build -t celeba .
+sudo docker run -d --name mycontainer -p 80:80 celeba 
 ```
 
+## Result
+- Accruacy Graph for VGG16
+
+![Alt text](./acc.png?raw=true "Accruacy Graph for VGG16")
+
+- Loss Graph for VGG16
+
+![Alt text](./loss.png?raw=true "Loss Graph for VGG16")
+
+- The model was trained for 20 epochs on GPU with a binary accuracy 0.89
