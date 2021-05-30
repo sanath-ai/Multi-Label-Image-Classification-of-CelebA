@@ -42,6 +42,8 @@ uvicorn app.main:app
 - In order to run using docker use the following code and visit <http://127.0.0.1:80/home/your_name>
 ```
 cd FAST
+sudo python3 -m venv <name of the environment>
+pip3 install -r requirements.txt
 sudo docker build -t celeba
 sudo docker run -d --name mycontainer -p 80:80 celeba
 ```
