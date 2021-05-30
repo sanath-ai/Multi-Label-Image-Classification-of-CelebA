@@ -62,6 +62,14 @@ sudo docker run -d --name mycontainer -p 80:80 celeba
 ![Alt text](./loss.png?raw=true "Loss Graph for VGG16")
 
 - The model was trained for 20 epochs on GPU with a binary accuracy 0.89
+- HOME Page
+
+![Alt text](./home.png?raw=true)
+
+- RESULT Page
+
+![Alt text](./res.png?raw=true)
+
 
 ## TODO
 - [ ] Adding CSS
